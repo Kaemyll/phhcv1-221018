@@ -13,11 +13,12 @@
             <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores deleniti enim, quaerat quia tempora
                 tenetur! Atque reiciendis, autem dicta quibusdam hic amet consequatur officiis quo in impedit,
                 distinctio fugiat nam.</h3>
-            <p><?= $produit['prix']; ?>€</p>
+            <div id="price"><?= $produit['prix']; ?>€</div>
+            <button type="button" class="btn btn-success">Ajouter</button>
         </div>
         <div class="produit-unique-bouton">
-            <button type="button" class="btn btn-warning">ajouter</button>
-            <button type="button" class="btn btn-primary">éditer</button>
+            <button type="button" class="btn btn-danger">Supprimer</button>
+            <button type="button" class="btn btn-warning">Modifier</button>
         </div>
     </div>
 </div>

@@ -53,3 +53,10 @@ body {
     justify-content: space-around;
     padding: 10px 10px;
 }
+
+#price {
+    font-size: xx-large;
+    font-weight: 900;
+    color: darkgreen;
+    text-transform: uppercase;
+}
