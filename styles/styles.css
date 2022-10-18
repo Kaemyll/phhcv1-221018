@@ -9,7 +9,6 @@ body {
 
 #fiche-produit {
     border-bottom: 2px double darkred;
-
 }
 
 #fiche-produit h2 {
@@ -30,7 +29,7 @@ body {
 
 .produit-unique-image {
     text-align: center;
-    width: 100%;
+    width: 512px;
     padding: 10px 20px;
 }
 
@@ -39,7 +38,6 @@ body {
     height: 100%;
     object-fit: cover;
     vertical-align: middle;
-
 }
 
 .produit-unique-contenu {
