@@ -11,7 +11,7 @@
     // print_r($produit);
 
     // ajout array $produit à array $produits
-    // array_push($produits, $produit, $produit);
+    array_push($produits, $produit, $produit);
 
     // affichage instance simple array $produits
     //var_dump($produits);
@@ -32,7 +32,7 @@
                 $pr=$produits[$i];
             ?>
         <tr>
-            <td class="produit-liste-image"><img src="<?= $pr['image'] ?>" alt="" /></td>
+            <td class="produit-liste-image"><img src="<?= $pr['image'] ?>" alt="" width="256px" /></td>
             <td class="produit-liste-nom"><?= $pr['nom'] ?></td>
             <td class="produit-liste-prix"><?php echo $pr['prix']; ?>€</td>
             <td>
