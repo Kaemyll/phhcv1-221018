@@ -19,7 +19,11 @@
 
     <?php include('include/navbar.php'); ?>
 
-    <div id="wrapper">WRAPPER</div>
+    <div id="wrapper">
+        <div id="content">
+            <?php include('include/produits/produits.php'); ?>
+        </div>
+    </div>
 
     <?php include('include/footer.html'); ?>
 

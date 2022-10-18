@@ -2,5 +2,5 @@
         $date= date('h:i');
         echo $date;
          ?>
-    <h1>Hello world boutique</h1>
+    <h1><b>Hello World</b> <i>boutique</i></h1>
 </div>
