@@ -20,9 +20,9 @@
     <?php include('include/navbar.php'); ?>
 
     <div id="wrapper">
-        <div id="content">
-            <?php include('include/produits/produits.php'); ?>
-        </div>
+
+        <?php include('include/produits/produits.php'); ?>
+
     </div>
 
     <?php include('include/footer.html'); ?>
