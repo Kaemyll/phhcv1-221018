@@ -9,6 +9,7 @@ body {
 
 #fiche-produit {
     border-bottom: 2px double darkred;
+
 }
 
 #fiche-produit h2 {
@@ -29,7 +30,7 @@ body {
 
 .produit-unique-image {
     text-align: center;
-    width: 512px;
+    width: 100%;
     padding: 10px 20px;
 }
 

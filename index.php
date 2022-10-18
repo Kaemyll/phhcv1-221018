@@ -21,8 +21,7 @@
     <?php include('include/navbar.php'); ?>
 
     <div id="wrapper">
-
-        <?php include('include/produit/produit.php'); ?>
+        <?php include('include/wrapper.php'); ?>
 
     </div>
 

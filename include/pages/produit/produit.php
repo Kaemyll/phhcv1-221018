@@ -7,7 +7,7 @@
     <hr />
     <div class="horizontal-layout">
         <div class="produit-unique-image">
-            <img class="img-responsive" src="<?= $produit['image'] ?>" alt="" />
+            <img class="img-responsive" src="<?= $produit['image'] ?>" alt="Image du produit" />
         </div>
         <div class="produit-unique-contenu">
             <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores deleniti enim, quaerat quia tempora
