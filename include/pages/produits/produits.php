@@ -30,10 +30,10 @@ $produits = getProduits($mysqli, 2);
         <tr>
             <td class="produit-liste-image"><img src="<?= $pr['image'] ?>" alt="" width="256px" /></td>
             <td class="produit-liste-nom"><?= $pr['pnom'] ?></td>
-            <td class="produit-liste-prix"><?php echo $pr['prix']; ?>€</td>
-            <td>
-                <button type="button" class="btn btn-warning">ajouter</button><br />
-                <button type="button" class="btn btn-primary">voir</button><br />
+            <td id="price"><?php echo $pr['prix']; ?>€</td>
+            <td class="produit-liste-bouton">
+                <button type="button" class="btn btn-warning">ajouter</button>
+                <button type="button" class="btn btn-primary">voir</button>
             </td>
 
         </tr>

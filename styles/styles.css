@@ -27,10 +27,36 @@ body {
     display: flex;
 }
 
+.produit-liste {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.produit-liste th {
+    text-align: center;
+}
+
+.produit-liste-bouton {
+    text-align: center;
+}
+
 .produit-unique-image {
     text-align: center;
     width: 512px;
     padding: 10px 20px;
+}
+
+.produit-liste-image {
+    text-align: center;
+    width: 256px;
+    padding: 10px 20px;
+}
+
+.produit-liste-nom {
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 700;
+    color: darkred;
 }
 
 .produit-unique-image >* {
@@ -54,7 +80,7 @@ body {
 }
 
 #price {
-    font-size: xx-large;
+    font-size: medium;
     font-weight: 900;
     color: darkgreen;
     text-transform: uppercase;
