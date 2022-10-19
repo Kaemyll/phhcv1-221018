@@ -2,30 +2,25 @@
 <hr />
 <?php
 
-// Mysql en localhost 3306
-// example.com - user - mdp - bdd
-$mysqli = mysqli_connect("localhost:3306", "root", "", "phpp-22-10-18");
+global $mysqli;
 
 include_once('produits.functions.php');
 
-$categorie = getCategorie($mysqli, $_GET['id_categories']);
+$categorie = getCategorie($_GET['id_categories']);
 
 // on récupère la liste des produits
 if(isset($_GET['id_categories'])) {
-    $produits = getProduits($mysqli, $_GET['id_categories']);?>
+    $produits = getProduits($_GET['id_categories']);?>
 <h4>Catégorie affichée : <?php echo $categorie['nom']; ?></h4>
 <?php
 } else {
     $produits = getProduits($mysqli);
 }
 
-
 // var_dump($produits);
 // var_dump($categorie);
 
 ?>
-
-
 
 <table class="produit-liste">
     <thead>
