@@ -24,6 +24,17 @@ function getProduits($id_categories = null)
     return $produits;
 };
 
+function getProduit($id)
+{
+    global $mysqli;
+
+    $reqPr = "SELECT `id`, `id_categories`, `nom`, `EAN`, `description`, `prix`, `image` FROM `produits` WHERE id = " . $id;
+    $result = mysqli_query($mysqli, $reqPr);
+
+    return mysqli_fetch_assoc($result);
+
+}
+
 function getCategorie($id_categories)
 {
     global $mysqli;
