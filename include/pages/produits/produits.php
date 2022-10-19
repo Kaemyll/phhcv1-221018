@@ -8,10 +8,24 @@ $mysqli = mysqli_connect("localhost:3306", "root", "", "phpp-22-10-18");
 
 include_once('produits.functions.php');
 
-$produits = getProduits($mysqli, 2);
+$categorie = getCategorie($mysqli, $_GET['id_categories']);
+
+// on récupère la liste des produits
+if(isset($_GET['id_categories'])) {
+    $produits = getProduits($mysqli, $_GET['id_categories']);?>
+<h4>Catégorie affichée : <?php echo $categorie['nom']; ?></h4>
+<?php
+} else {
+    $produits = getProduits($mysqli);
+}
+
+
 // var_dump($produits);
+// var_dump($categorie);
 
 ?>
+
+
 
 <table class="produit-liste">
     <thead>
@@ -33,7 +47,8 @@ $produits = getProduits($mysqli, 2);
             <td id="price"><?php echo $pr['prix']; ?>€</td>
             <td class="produit-liste-bouton">
                 <button type="button" class="btn btn-warning">ajouter</button>
-                <button type="button" class="btn btn-primary">voir</button>
+                <a href="?page=produit&idp<?= $pr['pid'] ?>"><button type="button"
+                        class="btn btn-primary">voir</button></a>
             </td>
 
         </tr>
