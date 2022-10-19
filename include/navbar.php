@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="?">Home</a>
+        <a class="navbar-brand" href="?">Accueil</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="?page=produit&idp=1">Produit 1</a></li>
+            <li class="active"><a href="?page=categories">Catégories</a></li>
             <li><a href="?page=produits">Produits</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">

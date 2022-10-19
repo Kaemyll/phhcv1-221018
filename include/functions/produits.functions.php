@@ -1,9 +1,6 @@
 <?php
 
-// Mysql en localhost 3306
-// example.com - user - mdp - bdd
-global $mysqli;
-$mysqli = mysqli_connect("localhost:3306", "root", "", "phpp-22-10-18");
+include_once 'include/functions/sql.php';
 
 function getProduits($id_categories = null)
 {
@@ -41,5 +38,20 @@ function getCategorie($id_categories)
     } else {
         return null;
     }
+
+};
+
+function getAllCategories()
+{
+    global $mysqli;
+
+    $reqCat = "SELECT id, nom, tva FROM categories";
+    $resultCat = mysqli_query($mysqli, $reqCat);
+    $categories = [];
+    while ($assocCat = mysqli_fetch_assoc($resultCat)) {
+        array_push($categories, $assocCat);
+    }
+
+    return $categories;
 
 };

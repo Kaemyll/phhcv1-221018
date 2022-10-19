@@ -87,3 +87,18 @@ body {
     color: darkgreen;
     text-transform: uppercase;
 }
+
+.categories-titres {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 10px;
+
+}
+
+.categorie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 10px;
+}
