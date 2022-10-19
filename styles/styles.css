@@ -88,17 +88,41 @@ body {
     text-transform: uppercase;
 }
 
-.categories-titres {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px 10px;
+/* categories php */
 
+.flex-container {
+    display: flex;
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    flex-flow: row;
+    justify-content: space-evenly;
+   
+    line-height:2em;
+}
+.flex-category {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    flex: 1 0 auto;
+    height:auto;
+    border-radius: 00.5em;
+    border: 2px solid teal;
 }
 
-.categorie {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px 10px;
+.category-id {
+    font-size: 0.75em;
+    font-weight: 400;
+    text-transform: lowercase;
+    color: darkred;
+}
+
+.category-nom {
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 900;
+    color: teal;
 }
