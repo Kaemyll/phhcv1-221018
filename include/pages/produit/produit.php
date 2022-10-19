@@ -3,7 +3,7 @@
 ?>
 
 <div id="fiche-produit">
-    <h2><?= $produit['nom'] ?></h2>
+    <h2><?= $produit['pnom'] ?></h2>
     <hr />
     <div class="horizontal-layout">
         <div class="produit-unique-image">
