@@ -1,12 +1,27 @@
+<?php
+include_once 'include/functions/produits.functions.php';
+$categories = getAllCategories();
+$produitSelectionne = null;
+if (isset($_GET['idp']) && is_numeric($_GET['idp'])) {
+    $produitSelectionne = getProduit($_GET['idp']);
+}
+?>
+
 <div id="produit-form" style="display: flex; padding: 5px 25px">
     <h2>Edition de produit</h2>
-    <form action="" method="get">
-        id:XXX
-        <label for="nomProduit">Nom du prduit : </label>
-        <input type="text" name="nomProduit" id="id_nomProduit">
+    <form action="" method="POST">
+        id:<?php echo ($produitSelectionne != null) ? $produitSelectionne['id'] : '' ?>
+
+        <br />
+        <label for="nomProduit">Nom du produit : </label>
+        <input type="text" name="nomProduit" id="id_nomProduit" value="<?php echo ($produitSelectionne != null) ? $produitSelectionne['nom'] : '' ?>">
         <label for="catProduit">Catégorie</label>
-        <select name="catProduit" id="id_catProduit">
-            <option value="">une catégorie</option>
+        <select name="catProduit" id="id_catProduit" <?php echo ($produitSelectionne != null) ? $produitSelectionne['id_categories'] : '' ?>>
+            <?php
+foreach ($categories as $categorie) {
+    echo '<option value="' . $categorie['id'] . '">' . $categorie['nom'] . '</option>';
+}
+?>
         </select>
         <hr/>
         <div id="produit-form-content" style="display: flex; padding: 5px 25px">

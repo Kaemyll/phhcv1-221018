@@ -9,10 +9,8 @@ switch ($_GET['page']) {
     case 'produit':
         if (isset($_GET['action']) && $_GET['action'] == 'edit') {
             include 'include/pages/produit/produit.form.php';
-            break;
         } else {
             include 'include/pages/produit/produit.php';
-            break;
         }
         break;
     case 'produits':
