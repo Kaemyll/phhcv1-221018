@@ -1,20 +1,23 @@
 <h2>Liste des produits</h2>
 <hr />
 <?php
-    // création array produits
-    $produits = [];
 
-    // création array produit
-    $produit = ['id'=>0, 'nom'=>'velo', 'prix'=>7500, 'image'=>'https://lapierre-shopware.accell.cloud/thumbnail/64/bb/9f/1648474576/E-Sensium%202.2%20MY21%20Web%20-%20View%20PNG_800x800.png'];
+include_once('produits.functions.php');
 
-    // affichage contenu array $produit
-    // print_r($produit);
+// création array produits
+$produits = [];
 
-    // ajout array $produit à array $produits
-    array_push($produits, $produit, $produit);
+// création array produit
+$produit = ['id'=>0, 'nom'=>'velo', 'prix'=>7500, 'image'=>'https://lapierre-shopware.accell.cloud/thumbnail/64/bb/9f/1648474576/E-Sensium%202.2%20MY21%20Web%20-%20View%20PNG_800x800.png'];
 
-    // affichage instance simple array $produits
-    //var_dump($produits);
+// affichage contenu array $produit
+// print_r($produit);
+
+// ajout array $produit à array $produits
+array_push($produits, $produit, $produit);
+
+// affichage instance simple array $produits
+//var_dump($produits);
 ?>
 
 <table class="produit-liste">
