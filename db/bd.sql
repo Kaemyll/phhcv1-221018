@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS `produits`;
 		
 CREATE TABLE `produits` (
   `id` INTEGER NOT NULL AUTO_INCREMENT DEFAULT NULL,
-  `id_categories` INTEGER NULL DEFAULT NULL,
+  `id_categorie` INTEGER NULL DEFAULT NULL,
   `nom` VARCHAR(64) NOT NULL,
   `EAN` CHAR(16) NULL DEFAULT NULL,
   `prix` DECIMAL NOT NULL DEFAULT 0,
@@ -41,7 +41,7 @@ CREATE TABLE `categories` (
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `produits` ADD FOREIGN KEY (id_categories) REFERENCES `categories` (`id`);
+ALTER TABLE `produits` ADD FOREIGN KEY (id_categorie) REFERENCES `categories` (`id`);
 
 -- ---
 -- Table Properties
@@ -54,7 +54,7 @@ ALTER TABLE `produits` ADD FOREIGN KEY (id_categories) REFERENCES `categories` (
 -- Test Data
 -- ---
 
--- INSERT INTO `produits` (`id`,`id_categories`,`nom`,`EAN`,`prix`,`description`,`image`) VALUES
+-- INSERT INTO `produits` (`id`,`id_categorie`,`nom`,`EAN`,`prix`,`description`,`image`) VALUES
 -- ('','','','','','','');
 -- INSERT INTO `categories` (`id`,`nom`,`tva`) VALUES
 -- ('','','');

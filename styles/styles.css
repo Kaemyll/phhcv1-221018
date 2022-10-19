@@ -34,6 +34,8 @@ body {
 
 .produit-liste th {
     text-align: center;
+    font-weight: 900;
+    text-decoration: underline;
 }
 
 .produit-liste-bouton {

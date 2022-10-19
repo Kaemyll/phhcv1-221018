@@ -9,7 +9,7 @@ include_once('produits.functions.php');
 $categorie = getCategorie($_GET['id_categories']);
 
 // on récupère la liste des produits
-if(isset($_GET['id_categories'])) {
+if(isset($_GET['id_categories']) && is_numeric($_GET['id_categories']) && $categorie!=NULL) {
     $produits = getProduits($_GET['id_categories']);?>
 <h4>Catégorie affichée : <?php echo $categorie['nom']; ?></h4>
 <?php
