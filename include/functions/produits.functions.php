@@ -66,3 +66,35 @@ function getAllCategories()
     return $categories;
 
 };
+
+/**
+ * Fonction de création d'un produit - l'id n'existe pas encore
+ * @param array $produit
+ * @return int
+ */
+function postProduit($id_categories, $nom, $EAN, $description, $prix, $image)
+{
+    global $mysqli;
+    $req = "INSERT INTO `produits`(`id_categories`, `nom`, `EAN`, `description`, `prix`, `image`) VALUES ($id_categories,'$nom','$EAN',$prix,'$description','$image')";
+    $result = mysqli_query($mysqli, $req);
+    return mysqli_affected_rows($mysqli) >= 1;
+}
+
+/**
+ * Fonction de mise à jour d'un produit existant - l'id existe
+ * @param $id
+ * @param $id_categories
+ * @param $nom
+ * @param $EAN
+ * @param $description
+ * @param $prix
+ * @param $image
+ * @return bool
+ */
+function putProduit($id, $id_categories, $nom, $EAN, $description, $prix, $image)
+{
+    global $mysqli;
+    $req = "UPDATE `produits` SET `id_categories`=$id_categories,`nom`='$nom',`EAN`='$EAN',`description`='$description',`prix`=$prix,`image`='$image' WHERE id=$id";
+    $result = mysqli_query($mysqli, $req);
+    return mysqli_affected_rows($mysqli) >= 1;
+}

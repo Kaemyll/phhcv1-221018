@@ -1,14 +1,25 @@
 <?php
 include_once 'include/functions/produits.functions.php';
+
+if (isset($_POST['idProduit'])) {
+    // soumission du formulaire produit
+    if (is_numeric($_POST['idProduit'])) {
+        // Update une entrée existante
+        putProduit($_POST['idProduit'], $_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['prixProduit'], $_POST['descrProduit'], $_POST['urlImageProd']);
+    } else {
+        // Poster une nouvelle entrée
+        postProduit($_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['prixProduit'], $_POST['descrProduit'], $_POST['urlImageProd']);
+    }
+}
+
 $categories = getAllCategories();
+
 $produitSelectionne = null;
 if (isset($_GET['idp']) && is_numeric($_GET['idp'])) {
     $produitSelectionne = getProduit($_GET['idp']);
-    echo ("<h2>Modification du produit</h2>");
-
 }
 
-var_dump($produitSelectionne);
+// var_dump($produitSelectionne);
 ?>
 
 <div id="produit-form">
