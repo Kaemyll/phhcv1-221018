@@ -9,12 +9,12 @@ include_once 'include/functions/produits.functions.php';
 if (isset($_GET['id_categories'])) {
     $categorie = getCategorie($_GET['id_categories']);
     if ($categorie != null) {?>
-        <h4>categorie : <?php echo $categorie['nom']; ?></h4>
-        <?php
+<h4>categorie : <?php echo $categorie['nom']; ?></h4>
+<?php
 $produits = getProduits($_GET['id_categories']);
     } else {?>
-        <h4>categorie : inexistante !</h4>
-        <?php
+<h4>categorie : inexistante !</h4>
+<?php
 $produits = getProduits();
     }
 } else {
@@ -48,6 +48,8 @@ for ($i = 0; $i < count($produits); $i++) {
                 <button type="button" class="btn btn-warning">ajouter</button>
                 <a href="?page=produit&idp<?=$pr['pid']?>"><button type="button"
                         class="btn btn-primary">voir</button></a>
+                <a href="?page=produit&action=edit&idp=<?=$pr['pid']?>"><button type="button"
+                        class="btn btn-success">editer</button></a>
             </td>
 
         </tr>

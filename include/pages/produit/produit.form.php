@@ -4,44 +4,66 @@ $categories = getAllCategories();
 $produitSelectionne = null;
 if (isset($_GET['idp']) && is_numeric($_GET['idp'])) {
     $produitSelectionne = getProduit($_GET['idp']);
+    echo ("<h2>Modification du produit</h2>");
+
 }
+
+var_dump($produitSelectionne);
 ?>
 
-<div id="produit-form" style="display: flex; padding: 5px 25px">
+<div id="produit-form">
     <h2>Edition de produit</h2>
     <form action="" method="POST">
-        id:<?php echo ($produitSelectionne != null) ? $produitSelectionne['id'] : '' ?>
+        <?php
+if ($produitSelectionne != null) {
+    echo 'ID => ' . $produitSelectionne['id'] . '<br />';}
+
+?>
+        <input type="hidden" name="idProduit"
+            value="<?=($produitSelectionne != null) ? $produitSelectionne['id'] : ''?>">
 
         <br />
         <label for="nomProduit">Nom du produit : </label>
-        <input type="text" name="nomProduit" id="id_nomProduit" value="<?php echo ($produitSelectionne != null) ? $produitSelectionne['nom'] : '' ?>">
+        <input type="text" name="nomProduit" id="id_nomProduit"
+            value="<?=($produitSelectionne != null) ? $produitSelectionne['nom'] : ''?>">
         <label for="catProduit">Catégorie</label>
-        <select name="catProduit" id="id_catProduit" <?php echo ($produitSelectionne != null) ? $produitSelectionne['id_categories'] : '' ?>>
+        <select name="catProduit" id="id_catProduit"
+            <?php echo ($produitSelectionne != null) ? $produitSelectionne['id_categories'] : '' ?>>
             <?php
 foreach ($categories as $categorie) {
-    echo '<option value="' . $categorie['id'] . '">' . $categorie['nom'] . '</option>';
+    echo '<option value="' .
+        $categorie['id'] .
+        '" ' .
+        (($produitSelectionne != null && $produitSelectionne['id_categories'] == $categorie['id']) ? 'selected' : '') .
+        '>' .
+        $categorie['nom'] .
+        '</option>';
 }
 ?>
         </select>
-        <hr/>
-        <div id="produit-form-content" style="display: flex; padding: 5px 25px">
-            <div style="width: 60%">
+        <hr />
+        <div id="produit-form-content">
+            <div>
                 <label for="descrProduit">Description</label><br />
-                <textarea name="descrProduit" id="id_descrProduit" cols="30" rows="30" style="margin-left: 15%; width: 70%; resize : none"></textarea><br />
+                <textarea name="descrProduit" id="id_descrProduit" cols="30"
+                    rows="30"><?=($produitSelectionne != null) ? $produitSelectionne['description'] : ''?></textarea><br />
                 <label for="eanProduit">Code-barre</label>
-                <input type="text" name="eanProduit" id="id_eanProduit"><br />
+                <input type="text" name="eanProduit" id="id_eanProduit"
+                    value="<?=($produitSelectionne != null) ? $produitSelectionne['EAN'] : ''?>"><br />
                 <label for="prixProduit">Prix</label>
-                <input type="number" name="prixProduit" id="id_prixProduit" min="0.01" step="0.01">
+                <input type="number" name="prixProduit" id="id_prixProduit" min="0.01" step="0.01"
+                    value="<?=($produitSelectionne != null) ? $produitSelectionne['prix'] : ''?>">
             </div>
-            <div style="flex: grow 1; padding: 5px 15px; text-align: center">
+            <div>
                 <label for="urlImageProd">url image</label>
-                <input type="text" name="urlImageProd" id="id_urlImageProd" style="max-width: 45vw; max-height: 45vh">
+                <input type="text" name="urlImageProd" id="id_urlImageProd"
+                    value="<?=($produitSelectionne != null) ? $produitSelectionne['image'] : ''?>">
                 <hr />
-                <img src="" alt="" id="imageProd">
+                <img src="<?=($produitSelectionne != null) ? $produitSelectionne['image'] : ''?>" alt="" id="imageProd">
             </div>
         </div>
-        <hr/>
-        <div style="display: flex; justify-content:space-between;">
+        <hr />
+        <div>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
             <button type="reset" class="btn btn-warning">Annuler</button>
         </div>

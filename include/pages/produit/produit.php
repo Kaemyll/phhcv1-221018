@@ -1,5 +1,6 @@
 <?php
-
+include_once 'include/functions/produits.functions.php';
+$produit = getProduit($_GET['idp']);
 ?>
 
 <div id="fiche-produit">
