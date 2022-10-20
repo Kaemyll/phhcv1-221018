@@ -25,12 +25,16 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="?page=produit&action=edit">Nouveau produit</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Panier <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li>
+                        <h3>Panier</h3>
+                    </li>
+                    <li><a href="<?php include 'include/pages/widget_panier/widget_panier.php';?>"></a>
+                    </li>
                 </ul>
             </li>
         </ul>
