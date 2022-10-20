@@ -8,7 +8,8 @@ if (isset($_POST['idProduit'])) {
         putProduit($_POST['idProduit'], $_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['prixProduit'], $_POST['descrProduit'], $_POST['urlImageProd']);
     } else {
         // Poster une nouvelle entrée
-        postProduit($_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['prixProduit'], $_POST['descrProduit'], $_POST['urlImageProd']);
+        $id = postProduit($_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['descrProduit'], $_POST['prixProduit'], $_POST['urlImageProd']);
+        header('location: ?page=produit&action=edit&idp=' . $id);
     }
 }
 

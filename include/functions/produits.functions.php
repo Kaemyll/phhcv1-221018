@@ -75,9 +75,11 @@ function getAllCategories()
 function postProduit($id_categories, $nom, $EAN, $description, $prix, $image)
 {
     global $mysqli;
-    $req = "INSERT INTO `produits`(`id_categories`, `nom`, `EAN`, `description`, `prix`, `image`) VALUES ($id_categories,'$nom','$EAN',$prix,'$description','$image')";
+
+    $req = "INSERT INTO `produits`(`id_categories`, `nom`, `EAN`, `description`, `prix`, `image`) VALUES ($id_categories,'" . addslashes($nom) . "','" . addslashes($EAN) . "','" . addslashes($description) . "',$prix,'" . addslashes($image) . "')";
+    echo "postProduit === " . $req;
     $result = mysqli_query($mysqli, $req);
-    return mysqli_affected_rows($mysqli) >= 1;
+    return mysqli_insert_id($mysqli); //$result; // mysqli_affected_rows($mysqli) >= 1;
 }
 
 /**
@@ -94,7 +96,9 @@ function postProduit($id_categories, $nom, $EAN, $description, $prix, $image)
 function putProduit($id, $id_categories, $nom, $EAN, $description, $prix, $image)
 {
     global $mysqli;
-    $req = "UPDATE `produits` SET `id_categories`=$id_categories,`nom`='$nom',`EAN`='$EAN',`description`='$description',`prix`=$prix,`image`='$image' WHERE id=$id";
-    $result = mysqli_query($mysqli, $req);
+    $req = "UPDATE `produits` SET `id_categories`=$id_categories,`nom`='" . addslashes($nom) . "',`EAN`='" . addslashes($EAN) . "',`description`='" . addslashes($description) . "',`prix`=$prix,`image`='$image' WHERE id=$id";
+    var_dump($req);
+
+    mysqli_query($mysqli, $req);
     return mysqli_affected_rows($mysqli) >= 1;
 }
