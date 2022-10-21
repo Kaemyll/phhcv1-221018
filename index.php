@@ -1,11 +1,14 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHPCV1</title>
+    <title>Document</title>
+
 
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -16,17 +19,14 @@
 </head>
 
 <body>
-    <?php include('include/header.php'); ?>
-
+    <?php include('include/header.html'); ?>
     <?php include('include/navbar.php'); ?>
-
     <div id="wrapper">
-        <?php include('include/wrapper.php'); ?>
-
+        <?php
+          //creation de l'array vide
+        include('include/wrapper.php');?>
     </div>
-
-    <?php include('include/footer.html'); ?>
-
+    <?php include('include/footer.html');?>
 </body>
 
 </html>

@@ -1,58 +1,51 @@
 <h2>Liste des produits</h2>
 <hr />
-
 <?php
-global $mysqli;
-
-include_once 'produits.functions.php';
-
+include_once 'produits.functions.php ';
 if (isset($_GET['idcat'])) {
-    $categorie = getCategorie($_GET['idcat']);
-    if ($categorie != null) {?>
-<h4>categorie : <?php echo $categorie['nom']; ?></h4>
-<?php
-$produits = getProduits($_GET['idcat']);
-    } else {?>
-<h4>categorie : inexistante !</h4>
-<?php
-$produits = getProduits();
+    $cat = getCategorie($_GET['idcat']);
+    if ($cat != null) {
+        echo '<h4>categorie : ' . $cat->nom . '</h4>';
+        $produits = getProduits($_GET['idcat']);
+    } else {
+        echo '<h4>categorie : innexistante</h4>';
+        $produits = getProduits();
     }
 } else {
     $produits = getProduits();
 }
-
 // var_dump($produits);
-// var_dump($categorie);
+// var_dump($cat);
 
 ?>
-
 <table class="produit-liste">
     <thead>
         <tr>
-            <th>IMAGE</th>
-            <th>NOM</th>
-            <th>PRIX</th>
-            <th>ACTIONS</th>
+            <th>image</th>
+            <th>nom</th>
+            <th>prix</th>
+            <th>action</th>
         </tr>
     </thead>
     <tbody>
         <?php
-for ($i = 0; $i < count($produits); $i++) {
-    $pr = $produits[$i];
-    ?>
-        <tr>
-            <td class="produit-liste-image"><img src="<?=$pr['image']?>" alt="" width="256px" /></td>
-            <td class="produit-liste-nom"><?=$pr['pnom']?></td>
-            <td id="price"><?php echo $pr['prix']; ?>€</td>
-            <td class="produit-liste-bouton">
-                <button type="button" class="btn btn-warning">ajouter</button>
-                <a href="?page=produit&idp<?=$pr['pid']?>"><button type="button"
-                        class="btn btn-primary">voir</button></a>
-                <a href="?page=produit&action=edit&idp=<?=$pr['pid']?>"><button type="button"
-                        class="btn btn-success">editer</button></a>
+for ($i = 0; $i < $produits->length(); $i++) {
+    $pr = $produits->getProduit($i);
+    ?><tr>
+            <td class="produit-liste-image"><img src="<?=$pr->getImage()?>" alt=""></td>
+            <td class="produit-liste-nom"><?=$pr->getNom()?></td>
+            <td class="produit-liste-prix"><?php echo $pr->getPrix(); ?>€</td>
+            <td class="produit-liste-buttons">
+                <a href="?action=edit&page=produit&idp=<?=$pr->getId()?>">
+                    <button type="button" class="btn btn-warning">edit</button>
+                </a>
+                <a href="?page=produit&idp=<?=$pr->getId()?>">
+                    <button type="button" class="btn btn-primary">voir</button>
+                </a>
             </td>
-
         </tr>
-        <?php }?>
+        <?php
+}
+?>
     </tbody>
 </table>

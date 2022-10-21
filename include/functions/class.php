@@ -9,6 +9,14 @@ class Produits
     {
          
     }
+    /*danger car permet la manipulation (ajout suppr dans l'array)
+    // public function getProduits() {
+    //     return $this->_produits;
+    // }*/
+    public function length(){return count($this->_produits);}
+    public function getProduit($position){
+        return $this->_produits[$position];
+    }
     public  function add(Produit $pr)
     {
         array_push($this->_produits,$pr);
@@ -26,7 +34,42 @@ class Produits
         return (count($resultTab)>0?$resultTab:null);
     }
 }
-
+class Categories
+{
+    private $_categories=[];
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
+         
+    }
+    public  function add(Categorie $ca)
+    {
+        array_push($this->_produits,$ca);
+    }
+    public function getById($id){
+        $resultTab=array_filter($this->_categories,function($item)use($id){
+            return $item->id()==$id;
+        });
+        return (count($resultTab)>0?$resultTab[0]:null);
+    }
+}
+class Categorie
+{
+    public $id;
+    public $nom;
+    public $tva;
+    /**
+     * Class constructor.
+     */
+    public function __construct($id,$nom,$tva)
+    {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->tva = $tva;
+    }
+}
 class Produit
 {
     protected $id;
@@ -47,10 +90,9 @@ class Produit
         $this->description=$desc;  
         $this->prix=$prix;  
         $this->idcat=$idcat;  
-        $this->img=$img;  
+        $this->image=$img;  
         $this->ean=$ean;  
     }
-    public function getIdcat(){return $this->idcat;}
     public function setNom($value) {
         $this->nom=$value;
     } 
@@ -58,8 +100,13 @@ class Produit
     protected function applyReduction($taux){
         $this->prix*=$taux;
     }
+    /* accesseurs GET */
+    public function getIdcat(){return $this->idcat;}
     public function getId(){return $this->id;}
     public function getPrix(){return $this->prix;}
+    public function getImage(){return $this->image;}
+    public function getEAN(){return $this->ean;}
+    public function getNom(){return $this->nom;}
 }
 class ProduitPanier extends Produit
 {
@@ -99,6 +146,7 @@ class Panier{
     {
         $this->produits=[];
     }
+
     public function addProduit(ProduitPanier $produit)
     {
         $tabOfResponse=array_filter($this->produits,function($item) use($produit) {
@@ -139,4 +187,13 @@ class Panier{
        }
         return $total;
     }
+    public function length()
+    {
+        return count($this->produits);
+    }
+    public function getProduit($position)
+    {
+        return $this->produits[$position];
+    }
+   
 }
