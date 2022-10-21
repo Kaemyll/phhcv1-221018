@@ -1,83 +1,75 @@
 <?php
-include_once 'include/functions/produits.functions.php';
-
-if (isset($_POST['idProduit'])) {
-    // soumission du formulaire produit
-    if (is_numeric($_POST['idProduit'])) {
-        // Update une entrée existante
-        putProduit($_POST['idProduit'], $_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['prixProduit'], $_POST['descrProduit'], $_POST['urlImageProd']);
-    } else {
-        // Poster une nouvelle entrée
-        $id = postProduit($_POST['catProduit'], $_POST['nomProduit'], $_POST['eanProduit'], $_POST['descrProduit'], $_POST['prixProduit'], $_POST['urlImageProd']);
-        header('location: ?page=produit&action=edit&idp=' . $id);
+//var_dump($_POST);
+include_once 'produit.functions.php';
+if(isset($_POST['idProduit'])){
+    //soumission du formulaire
+    if(is_numeric($_POST['idProduit']))
+    {
+        putProduit($_POST['idProduit'],$_POST['categorieProduit'],$_POST['nomProduit'],$_POST['eanProduit'],$_POST['prixProduit'],$_POST['descriptionProduit'],$_POST['urlImageProduit']);
+    }
+    else{
+       $id=postProduit($_POST['categorieProduit'],$_POST['nomProduit'],$_POST['eanProduit'],$_POST['prixProduit'],$_POST['descriptionProduit'],$_POST['urlImageProduit']);
+       header('Location:?page=produit&action=edit&idp='.$id);
     }
 }
 
-$categories = getAllCategories();
 
-$produitSelectionne = null;
-if (isset($_GET['idp']) && is_numeric($_GET['idp'])) {
-    $produitSelectionne = getProduit($_GET['idp']);
+$produit = null;
+if (isset($_GET['idp'])) {
+    $produit = getProduit($_GET['idp']);
 }
-
-// var_dump($produitSelectionne);
 ?>
-
-<div id="produit-form">
-    <h2>Edition de produit</h2>
+<div id="produit-form" style="padding:5px 25px;">
+    <h2>Edition produit</h2>
     <form action="" method="POST">
         <?php
-if ($produitSelectionne != null) {
-    echo 'ID => ' . $produitSelectionne['id'] . '<br />';}
-
+if ($produit != null) {echo 'id:' . $produit['id'] . '<br/>';}
 ?>
-        <input type="hidden" name="idProduit"
-            value="<?=($produitSelectionne != null) ? $produitSelectionne['id'] : ''?>">
-
-        <br />
-        <label for="nomProduit">Nom du produit : </label>
-        <input type="text" name="nomProduit" id="id_nomProduit"
-            value="<?=($produitSelectionne != null) ? $produitSelectionne['nom'] : ''?>">
-        <label for="catProduit">Catégorie</label>
-        <select name="catProduit" id="id_catProduit"
-            <?php echo ($produitSelectionne != null) ? $produitSelectionne['id_categories'] : '' ?>>
+        <input type="hidden" name="idProduit" value="<?=($produit != null) ? $produit['id'] : ''?>">
+        <label for="nomProduit">Nom produit :</label>
+        <input type="text" name="nomProduit" id="i_nomProduit"
+            value="<?=($produit != null) ? $produit['nom'] : ''?>"><br />
+        <label for="categorieProduit">Categorie</label>
+        <select name="categorieProduit" id="i_categorieProduit">
             <?php
-foreach ($categories as $categorie) {
-    echo '<option value="' .
-        $categorie['id'] .
-        '" ' .
-        (($produitSelectionne != null && $produitSelectionne['id_categories'] == $categorie['id']) ? 'selected' : '') .
-        '>' .
-        $categorie['nom'] .
-        '</option>';
+include_once 'include/pages/categories/categories.functions.php';
+$categories = getCategories();
+foreach ($categories as $cat) {
+    echo '<option value="'.
+            $cat['id'].
+            '" '.
+            (($produit != null && $produit['idcat']==$cat['id']) ? 'selected' : '').
+            '>' .
+            $cat['nom'] .
+            '</option>';
 }
 ?>
         </select>
         <hr />
-        <div id="produit-form-content">
-            <div>
-                <label for="descrProduit">Description</label><br />
-                <textarea name="descrProduit" id="id_descrProduit" cols="30"
-                    rows="30"><?=($produitSelectionne != null) ? $produitSelectionne['description'] : ''?></textarea><br />
-                <label for="eanProduit">Code-barre</label>
-                <input type="text" name="eanProduit" id="id_eanProduit"
-                    value="<?=($produitSelectionne != null) ? $produitSelectionne['EAN'] : ''?>"><br />
-                <label for="prixProduit">Prix</label>
-                <input type="number" name="prixProduit" id="id_prixProduit" min="0.01" step="0.01"
-                    value="<?=($produitSelectionne != null) ? $produitSelectionne['prix'] : ''?>">
+        <div id="produit-form-content" style="display:flex">
+            <div style="width:60%">
+                <label for="descriptionProduit">Description</label><br />
+                <textarea name="descriptionProduit" id="i_descriptionProduit" cols="30" rows="10"
+                    style="margin-left:15%;width:70%;resize : none;"><?=($produit != null) ? $produit['description'] : ''?></textarea><br />
+                <label for="eanProduit">barcode</label><br />
+                <input type="text" name="eanProduit" id="i_eanProduit"
+                    value="<?=($produit != null) ? $produit['EAN'] : ''?>"><br />
+                <label for="prixProduit">Prix</label><br />
+                <input type="number" name="prixProduit" id="i_prixProduit" min="0.01" step="0.01"
+                    value="<?=($produit != null) ? $produit['prix'] : ''?>">
             </div>
-            <div>
-                <label for="urlImageProd">url image</label>
-                <input type="text" name="urlImageProd" id="id_urlImageProd"
-                    value="<?=($produitSelectionne != null) ? $produitSelectionne['image'] : ''?>">
+            <div style="flex-grow:1;padding:5px 15px;text-align:center">
+                <label for="urlImageProduit">url image</label><br />
+                <input type="text" name="urlImageProduit" id="i_urlImageProduit" style="max-width:45vw;max-height:45vh;"
+                    value="<?=($produit != null) ? $produit['image'] : ''?>">
                 <hr />
-                <img src="<?=($produitSelectionne != null) ? $produitSelectionne['image'] : ''?>" alt="" id="imageProd">
+                <img src="<?=($produit != null) ? $produit['image'] : ''?>" alt="" id="imageProduit">
             </div>
         </div>
         <hr />
-        <div>
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-            <button type="reset" class="btn btn-warning">Annuler</button>
+        <div style="display:flex;justify-content:space-between;">
+            <button type="reset" class="btn btn-warning">reset</button>
+            <button type="submit" class="btn btn-info">valider</button>
         </div>
     </form>
 </div>

@@ -4,14 +4,14 @@
 <?php
 global $mysqli;
 
-include_once 'include/functions/produits.functions.php';
+include_once 'produits.functions.php';
 
-if (isset($_GET['id_categories'])) {
-    $categorie = getCategorie($_GET['id_categories']);
+if (isset($_GET['idcat'])) {
+    $categorie = getCategorie($_GET['idcat']);
     if ($categorie != null) {?>
 <h4>categorie : <?php echo $categorie['nom']; ?></h4>
 <?php
-$produits = getProduits($_GET['id_categories']);
+$produits = getProduits($_GET['idcat']);
     } else {?>
 <h4>categorie : inexistante !</h4>
 <?php

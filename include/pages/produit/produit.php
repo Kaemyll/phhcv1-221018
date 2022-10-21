@@ -1,25 +1,26 @@
-<?php
-include_once 'include/functions/produits.functions.php';
-$produit = getProduit($_GET['idp']);
-?>
-
-<div id="fiche-produit">
-    <h2><?=$produit['nom']?></h2>
+<!-- vue d'un produit -->
+<div id="produit-unique">
+    <h2>TITRE DU PRODUIT</h2>
     <hr />
     <div class="horizontal-layout">
         <div class="produit-unique-image">
-            <img class="img-responsive" src="<?=$produit['image']?>" alt="Image du produit" />
+            <img src="https://lapierre-shopware.accell.cloud/thumbnail/64/bb/9f/1648474576/E-Sensium%202.2%20MY21%20Web%20-%20View%20PNG_800x800.png"
+                class="img-responsive" alt="Image">
         </div>
-        <div class="produit-unique-contenu">
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores deleniti enim, quaerat quia tempora
-                tenetur! Atque reiciendis, autem dicta quibusdam hic amet consequatur officiis quo in impedit,
-                distinctio fugiat nam.</h3>
-            <div id="price"><?=$produit['prix'];?>€</div>
-            <button type="button" class="btn btn-success">Ajouter</button>
+        <div class="produit-unique-center">
+            <h3>Description :</h3>
+            Excepteur laboris exercitation reprehenderit sunt amet elit quis voluptate. Nostrud Lorem minim sit
+            consectetur laboris proident excepteur tempor. Officia veniam dolore sunt incididunt ut consequat quis nisi
+            cillum eiusmod minim anim. Voluptate duis exercitation consequat et quis nisi laborum velit esse aliqua.
+            Nisi irure occaecat ad exercitation cupidatat ex elit qui in ad culpa non dolor.
+            Cupidatat est occaecat aliquip ex fugiat excepteur. Est proident irure culpa culpa cupidatat. Lorem pariatur
+            magna dolore excepteur. Duis excepteur labore elit officia elit.
+            <div class="produit-unique-prix">50.00€</div>
+            <button type="button" class="btn btn-info">Ajouter</button>
         </div>
-        <div class="produit-unique-bouton">
-            <button type="button" class="btn btn-danger">Supprimer</button>
-            <button type="button" class="btn btn-warning">Modifier</button>
+        <div class="produit-unique-admin-buttons">
+            <button type="button" class="btn btn-info">Supprimer</button>
+            <button type="button" class="btn btn-warning">Editer</button>
         </div>
     </div>
 </div>
