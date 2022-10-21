@@ -32,7 +32,7 @@ if ($produit != null) {echo 'id:' . $produit->getId() . '<br/>';}
         <label for="categorieProduit">Categorie</label>
         <select name="categorieProduit" id="i_categorieProduit">
             <?php
-include_once 'include/pages/categories/categories.functions.php';
+include_once 'include/pages/categorie/categories.functions.php';
 $categories = getCategories();
 foreach ($categories as $cat) {
     echo '<option value="'.

@@ -1,6 +1,7 @@
 <?php
   var_dump($_SESSION);
   include_once 'include/functions/class.php';
+  include_once 'include/pages/produit/produit.functions.php';
   if(isset($_SESSION['panier']) && ($_SESSION['panier'] instanceof Panier) ){
     //on un panier de pret
   }
