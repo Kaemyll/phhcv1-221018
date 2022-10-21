@@ -1,149 +1,31 @@
-body {
-    height: 99vh;
-}
-
-#wrapper {
-    height: 100%;
-    overflow-y: auto;
-}
-
-#fiche-produit {
-    border-bottom: 2px double darkred;
-}
-
-#fiche-produit h2 {
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: 0 0 0.5em;
-    padding: 0;
-    text-transform: uppercase;
-}
-
-#fiche-produit hr {
-    margin: 5px auto;
-}
-
-.horizontal-layout {
-    display: flex;
-}
-
-.produit-liste {
-    width: 80%;
-    margin-left: 10%;
-}
-
-.produit-liste th {
-    text-align: center;
-    font-weight: 900;
-    text-decoration: underline;
-}
-
-.produit-liste-bouton {
-    text-align: center;
-}
-
-.produit-unique-image {
-    text-align: center;
-    width: 512px;
-    padding: 10px 20px;
-}
-
-.produit-liste-image {
-    text-align: center;
-    width: 256px;
-    padding: 10px 20px;
-}
-
-.produit-liste-nom {
-    text-transform: uppercase;
-    font-size: large;
-    font-weight: 700;
-    color: darkred;
-}
-
-.produit-unique-image >* {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    vertical-align: middle;
-}
-
-.produit-unique-contenu {
-    flex-grow: 1;
-    padding: 10px 30px;
-}
-
-.produit-unique-bouton {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px 10px;
-}
-
-#price {
-    font-size: medium;
-    font-weight: 900;
-    color: darkgreen;
-    text-transform: uppercase;
-}
-
-/* categories php */
-
-.flex-container {
-    display: flex;
-
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    flex-flow: row;
-    justify-content: space-evenly;
-   
-    line-height:2em;
-}
-.flex-category {
-    margin: 5px;
-    padding: 5px;
-    font-size: 1.5em;
-    text-align: center;
-    flex: 1 0 auto;
-    height:auto;
-    border-radius: 00.5em;
-    border: 2px solid teal;
-}
-
-.category-id {
-    font-size: 0.75em;
-    font-weight: 400;
-    text-transform: lowercase;
-    color: darkred;
-}
-
-.category-nom {
-    text-transform: uppercase;
-    font-size: large;
-    font-weight: 900;
-    color: teal;
-}
-
-#w-panier {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-  }
-  .w-panier-produit {
-    display: flex;
-  }
-  .w-panier-produit td{
-    padding: 2px 15px;
-  }
-
-  .w-panier-produit-img{
-    max-width:128px;
-    height: 100px;
-    size: auto;
-  }
-  .w-panier-produit-total{text-align: right;padding-right: 10px;}
-  .w-panier-produit-buttons{text-align: center;}
-  .w-panier-produit-buttons>button{padding: 0 5px;height: 20px; font-size: 8px;}
+body{height: 98vh;}
+#wrapper{height:100%;overflow-y: auto;}
+/**
+    common layouts
+**/
+.horizontal-layout{display:flex;}
+/**
+    un produit unique 
+    produit/produit.php
+**/
+#produit-unique hr{margin:5px 15%;padding:5px 20px; }
+#produit-unique{border-bottom: 2px double grey; }
+.produit-unique-image{min-width: 300px;max-width: 30%;min-height:60vh; text-align: center;padding: 10px 20px;}
+.produit-unique-image>*{vertical-align: middle;}
+.produit-unique-center{flex-grow: 1;padding: 10px 30px;}
+.produit-unique-center h3{text-decoration:underline;}
+.produit-unique-prix{padding-top: 20px;font-weight:900; font-size: xx-large; color: skyblue;}
+.produit-unique-admin-buttons{display:flex;flex-direction:column; justify-content: space-around;padding: 10px 10px;}
+/**
+    liste produits
+**/
+.produit-liste{width:80%;margin-left:10%;}
+.produit-liste th{text-align: center;}
+.produit-liste-image{padding: 5px 10px;text-align: center;width:300px}
+.produit-liste-image>img{height:128px; max-width: 256px; size:auto;}
+.produit-liste-buttons{text-align: center;}
+/**
+    liste des categories
+**/ 
+#categories-liste{display: flex;justify-content: space-evenly;}
+.categories-liste-categorie{width:200px; height: 130px; border-radius: 8px;border:2px solid skyblue;text-align: center;padding:5px 15px;}

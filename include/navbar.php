@@ -7,14 +7,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="?">Accueil</a>
+        <a class="navbar-brand" href="?page=home">Home</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="?page=categories">Catégories</a></li>
-            <li><a href="?page=produits">Produits</a></li>
+            <li class="active"><a href="?page=categories">categories</a></li>
+            <li><a href="?page=produits">produits</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -23,7 +23,7 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="?page=produit&action=edit">Nouveau produit</a></li>
+            <li><a href="?page=produit&action=edit">nouveau produit</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Panier <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -33,8 +33,7 @@
                     <li>
                         <h3>Panier</h3>
                     </li>
-                    <li><a href="<?php include 'include/pages/widget_panier/widget_panier.php';?>"></a>
-                    </li>
+                    <li><?php include 'include/pages/widget_panier/widget_panier.php'; ?></li>
                 </ul>
             </li>
         </ul>
