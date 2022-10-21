@@ -3,13 +3,27 @@
   include_once 'include/functions/class.php';
   include_once 'include/pages/produit/produit.functions.php';
   if(isset($_SESSION['panier']) && ($_SESSION['panier'] instanceof Panier) ){
+    //echo '<h2>reopened</h2>';
     //on un panier de pret
   }
   else {
+    //echo '<h2>new</h2>';
+
     $_SESSION['panier']=new Panier();
   }
-?>
+  $panier=$_SESSION['panier'];
+//ajout au panier si action = add
+  if(isset($_GET['action'])&& $_GET['action']=='add' && isset($_GET['idp'])){
+    $produit=getProduit($_GET['idp']);
+    //protection id innexistant
+    if($produit !=null){
+      $produitPanier=ProduitPanier::convertProduit($produit);
+      $panier->addProduit($produitPanier);
+    }
+  }
+//var_dump($panier);
 
+?>
 <style>
 #w-panier {
     display: flex;
@@ -74,8 +88,12 @@
                     <div><?= $pr->getNom() ?></div>
                     <div class="qte"><?php echo  $pr->getQte().' x '.$pr->getPrix();?></div>
                     <div class="w-panier-produit-buttons">
-                        <button type="button" class="btn btn-warning">-</button>
-                        <button type="button" class="btn btn-info">+</button>
+                        <a href="?action=remove&page=produits&idp=<?=$pr->getId()?>">
+                            <button type="button" class="btn btn-warning">-</button>
+                        </a>
+                        <a href="?action=add&page=produits&idp=<?=$pr->getId()?>">
+                            <button type="button" class="btn btn-info">+</button>
+                        </a>
                     </div>
                 </td>
                 <td><?=$pr->getQte()*$pr->getPrix();?>€</td>
@@ -86,5 +104,5 @@
     <hr />
     <div class="w-panier-produit-total">Total : <?=$_SESSION['panier']->totalHT()?></div>
 
-    <button type="button" class="btn btn-primary">valider</button>
+    <button type="button" class="btn btn-primary">valider<br />panier</button>
 </div>

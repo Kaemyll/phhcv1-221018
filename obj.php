@@ -4,7 +4,7 @@ include_once 'include/functions/class.php';
 
 echo 'Objet test';
 
-//$id,$nom,$desc,$prix,$ean,$img
+//$id,$nom,$desc,$prix,$ean,$image
 $pr1=new Produit(2,'produit From produit','description',5.5,'3184587458','http://',1);
 //var_dump($pr1);
 //access des champs d'une instance
