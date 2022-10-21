@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <?php include('include/header.html'); ?>
+    <?php include('include/header.php'); ?>
     <?php include('include/navbar.php'); ?>
     <div id="wrapper">
         <?php
